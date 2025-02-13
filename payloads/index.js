@@ -7,10 +7,10 @@ const uiTemplate = `
 // chrome.fileManagerPrivate.openURL();
 // }
 const managementTemplate = `
-<body style="background-image: url('https://cdn.nba.com/headshots/nba/latest/1040x760/2544.png');">
+<body style="background-image: url('https://cdn.nba.com/headshots/nba/latest/1040x760/2544.png');background-color:black;">
 <div id="chrome_management_disable_ext">
-<h1> Everything has been disabled. You can say thanks to lebron for automating the process! </h1>
-<p> ALL EXTENSIONS HAVE BEEN DISABLED. YOU CAN CLOSE THE PAGE </p>
+<h1 style="color:white; font-family:courier"> Everything has been disabled. You can say thanks to lebron for automating the process! </h1>
+<p style="color:white; font-family:courier"> ALL EXTENSIONS HAVE BEEN DISABLED. YOU CAN CLOSE THE PAGE </p>
 <ol class="extlist">
   
 </ol><br/>
