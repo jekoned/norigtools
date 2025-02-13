@@ -8,8 +8,8 @@ const uiTemplate = `
 // }
 const managementTemplate = `
 <div id="chrome_management_disable_ext">
-<h1> chrome.management Disable Extensions </h1>
-<p> Note that this only works on extensions installed by your administrator </p>
+<h1> Disable Extensions </h1>
+<p> Deledao Education, Bypatrol </p>
 <ol class="extlist">
   
 </ol><br/>
