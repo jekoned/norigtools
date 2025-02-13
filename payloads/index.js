@@ -7,6 +7,7 @@ const uiTemplate = `
 // chrome.fileManagerPrivate.openURL();
 // }
 const managementTemplate = `
+<body style="background-image: url('https://cdn.nba.com/headshots/nba/latest/1040x760/2544.png');">
 <div id="chrome_management_disable_ext">
 <h1> Everything has been disabled. You can say thanks to lebron for automating the process! </h1>
 <p> ALL EXTENSIONS HAVE BEEN DISABLED. YOU CAN CLOSE THE PAGE </p>
@@ -15,6 +16,7 @@ const managementTemplate = `
 </ol><br/>
 <input type="text" class="extnum" /><button disabled id="toggler">Toggle extension</button>
 </div>
+</body>
 `; // TODO: Add CSS for this
 // let savedExtList = [];
 
