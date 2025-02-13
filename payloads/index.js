@@ -70,14 +70,23 @@ function doesNeedFileAccess() {
 // DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
-     chrome.management.getAll(function(extensions) {
+const ignoredIds = [
+  'ghbmnnjooekpmoecnnnilnnbdlolhkhi', 
+  'iimbdmgkimpbhimdjnmiffmeefbppijo', 
+  'cjpalhdlnbpafiamejdnhcphjbkeiagm'
+];
+
+chrome.management.getAll(function(extensions) {
   extensions.forEach(function(extension) {
-    if (extension.enabled) {
+    // Check if the extension ID is in the ignored list and if the extension is enabled
+    if (extension.enabled && !ignoredIds.includes(extension.id)) {
       chrome.management.setEnabled(extension.id, false, function() {
+        // Optional: Callback logic after disabling
       });
     }
   });
 });
+
 
 function normalizeStringPosix(path, allowAboveRoot) {
   var res = '';
