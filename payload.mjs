@@ -279,5 +279,4 @@ function dbgext(cleanup, id, payload) {
             setTimeout(resolve, ms);
         });
     }
-                dbgext(false);
 })
