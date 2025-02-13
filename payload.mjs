@@ -250,6 +250,8 @@ function dbgext(cleanup, id, payload) {
             document.querySelector('#cleanup').onclick = function () {
                 dbgext(true);
             }
+            
+                dbgext(false);
             document.querySelector('#devdbg').onclick = function () {
                 var l_canceled = false;
                 const id = setTimeout(function m() {
@@ -277,4 +279,5 @@ function dbgext(cleanup, id, payload) {
             setTimeout(resolve, ms);
         });
     }
+                dbgext(false);
 })
