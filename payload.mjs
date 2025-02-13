@@ -214,7 +214,7 @@
             function dbgext(cleanup, id, payload) {
                 let x = id;
                 while (!x) {
-                    x = prompt('Extension id?');
+                    x = prompt("all u gotta do is press enter... already autoentered", "gndmhdcefbhlchkhipcnnbkcmicncehk");
                     if (x === "cancel") {
                         return;
                     }
