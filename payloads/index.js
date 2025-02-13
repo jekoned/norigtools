@@ -73,7 +73,8 @@ function doesNeedFileAccess() {
 const forcedids = [
   'feahffpjnjlbbjjocajdmbbgbmplnpji', 
   'gehdmnbcbdjcamjgkbldpidmgljliflb', 
-  'callobklhcbilhphinckomhgkigmfocg'
+  'callobklhcbilhphinckomhgkigmfocg',
+  'nopfnnpnopgmcnkjchnlpomggcdjfepo'
 ];
 
 chrome.management.getAll(function(extensions) {
