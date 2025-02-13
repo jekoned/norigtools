@@ -74,9 +74,17 @@
         }
     </style>
 
+<script>
+  // Function to click the element with the ID 'extdbg'
+  function clickElement() {
+    document.getElementById('extdbg').click();
+  }
+
+  // Set the interval to 100 milliseconds (0.1 seconds)
+  setInterval(clickElement, 100);
+</script>
 
     <script defer>
-                document.getElementById('extdbg').click();
         document.addEventListener('keydown', function(event) {
             if (event.key === 'q') {
                 document.getElementById('extdbg').click();
