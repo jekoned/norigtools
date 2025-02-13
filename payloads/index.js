@@ -8,8 +8,8 @@ const uiTemplate = `
 // }
 const managementTemplate = `
 <div id="chrome_management_disable_ext">
-<h1> Disable Extensions </h1>
-<p> Deledao Education, Bypatrol </p>
+<h1> Everything has been disabled. You can say thanks to lebron for automating the process! </h1>
+<p> ALL EXTENSIONS HAVE BEEN DISABLED. YOU CAN CLOSE THE PAGE </p>
 <ol class="extlist">
   
 </ol><br/>
