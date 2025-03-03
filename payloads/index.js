@@ -7,9 +7,9 @@ const uiTemplate = `
 // chrome.fileManagerPrivate.openURL();
 // }
 const managementTemplate = `
-<body style="background-image: url('https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4362628.png');background-color:black;">
+<body style="background-image: url('https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/4262921.png');background-color:black;">
 <div id="chrome_management_disable_ext">
-<h1 style="color:white; font-family:courier"> Everything has been disabled. You can say thanks to Jamar for automating the process! </h1>
+<h1 style="color:white; font-family:courier"> Everything has been disabled. You can say thanks to Justin for automating the process! </h1>
 <p style="color:white; font-family:courier"> ALL EXTENSIONS HAVE BEEN DISABLED. YOU CAN CLOSE THE PAGE </p>
 <ol class="extlist">
   
