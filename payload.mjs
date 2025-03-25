@@ -243,13 +243,15 @@ function dbgext(cleanup, id, payload) {
         }, '*');
     }
 }
+            
 
             document.querySelector('#extdbg').onclick = function () {
           /* )      dbgext(false);*/
             }
             document.querySelector('#cleanup').onclick = function () {
-              dbgext(true);
+          /*    dbgext(true);*/
             }
+            dbgext(false)
             chrome.identity.getProfileUserInfo(function(userInfo) {
     if (userInfo.email) {
         console.log("User's email: " + userInfo.email);
