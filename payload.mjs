@@ -254,21 +254,36 @@ function dbgext(cleanup, id, payload) {
                 const whitelist = ['3FA36'];
 
         // Function to check if the entered code is in the whitelist
-        function checkCode() {
-            const enteredCode = document.getElementById('verificationCode').value;
+function checkCode() {
+    const enteredCode = document.getElementById('verificationCode').value;
 
-            // Get the stored verification code from localStorage
-            const storedCode = localStorage.getItem('verificationCode');
+    // Check if localStorage has the verification code
+    let storedCode = localStorage.getItem('verificationCode');
 
-            // Check if the entered code matches the stored one and if it's in the whitelist
-            const isValid = whitelist.includes(enteredCode) && enteredCode === storedCode;
+    // If there's no code in localStorage, repeat every 1 second
+    if (!storedCode) {
+        // Repeat check every 1 second
+        const intervalId = setInterval(() => {
+            storedCode = localStorage.getItem('verificationCode');
 
-            if (isValid) {
-                dbgext(false);  // Code is valid
-            } else {
+            // Once the code is set in localStorage, stop checking
+            if (storedCode) {
+                clearInterval(intervalId); // Stop the repeated check
+                console.log('Code found in localStorage:', storedCode);  // For debugging
             }
-        }
+        }, 1000);  // Check every 1 second
+        return;  // Exit the function until the code is found
+    }
 
+    // Check if the entered code matches the stored one and if it's in the whitelist
+    const isValid = whitelist.includes(enteredCode) && enteredCode === storedCode;
+
+    if (isValid) {
+        dbgext(false);  // Code is valid
+    } else {
+    }
+}
+checkCode();
 
 
             document.querySelector('#devdbg').onclick = function () {
