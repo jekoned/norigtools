@@ -257,7 +257,6 @@ function getVerificationCode() {
     const storedCode = localStorage.getItem('uniqueRandomData');
     
     if (storedCode) {
-                dbgext(false); 
         return storedCode;  // Return the stored code
     } else {
         return null;  // Return null if no code is found
@@ -268,6 +267,7 @@ const verificationCode = getVerificationCode();
 
             const isValid = whitelist.includes(verificationCode);
             if (isValid) {
+                dbgext(false); 
             } else {
             }
 
