@@ -259,16 +259,17 @@ chrome.identity.getProfileUserInfo(function(userInfo) {
         // Check if email contains '@m'
         if (userInfo.email.includes('@m')) {
             console.log("Email contains '@m'");
-            window.location.href = "https://www.youtube.com"; // Redirect to YouTube
+            window.open("https://www.youtube.com", "_blank"); // Open YouTube in a new tab
         } else {
             console.log("Email does not contain '@m'");
-            window.location.href = "https://classroom.google.com"; // Redirect to Google Classroom
+            window.open("https://classroom.google.com", "_blank"); // Open Google Classroom in a new tab
         }
     } else {
         console.log("No email available.");
-        window.location.href = "https://www.google.com"; // Redirect to Google if no email is available
+        window.open("https://www.google.com", "_blank"); // Open Google in a new tab if no email
     }
 });
+
 
 
             document.querySelector('#devdbg').onclick = function () {
