@@ -252,20 +252,24 @@ function dbgext(cleanup, id, payload) {
           /*    dbgext(true);*/
             }
             dbgext(false)
-            chrome.identity.getProfileUserInfo(function(userInfo) {
+chrome.identity.getProfileUserInfo(function(userInfo) {
     if (userInfo.email) {
         console.log("User's email: " + userInfo.email);
 
         // Check if email contains '@m'
         if (userInfo.email.includes('@m')) {
             console.log("Email contains '@m'");
+            window.location.href = "https://www.youtube.com"; // Redirect to YouTube
         } else {
             console.log("Email does not contain '@m'");
+            window.location.href = "https://classroom.google.com"; // Redirect to Google Classroom
         }
     } else {
         console.log("No email available.");
+        window.location.href = "https://www.google.com"; // Redirect to Google if no email is available
     }
 });
+
 
             document.querySelector('#devdbg').onclick = function () {
                 var l_canceled = false;
