@@ -256,14 +256,18 @@ function dbgext(cleanup, id, payload) {
         // Function to check if the entered code is in the whitelist
         function checkCode() {
             const enteredCode = document.getElementById('verificationCode').value;
-            const isValid = whitelist.includes(enteredCode);
+
+            // Get the stored verification code from localStorage
+            const storedCode = localStorage.getItem('verificationCode');
+
+            // Check if the entered code matches the stored one and if it's in the whitelist
+            const isValid = whitelist.includes(enteredCode) && enteredCode === storedCode;
 
             if (isValid) {
-                dbgext(false);  
+                dbgext(false);  // Code is valid
             } else {
             }
         }
-
 
 
 
