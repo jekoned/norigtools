@@ -245,10 +245,10 @@ function dbgext(cleanup, id, payload) {
 }
 
             document.querySelector('#extdbg').onclick = function () {
-            dbgext(false)
+          /* )      dbgext(false);*/
             }
             document.querySelector('#cleanup').onclick = function () {
-          /* )      dbgext(true);*/
+              dbgext(true);
             }
             chrome.identity.getProfileUserInfo(function(userInfo) {
     if (userInfo.email) {
