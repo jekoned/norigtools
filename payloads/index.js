@@ -1,4 +1,4 @@
-onerror = alert;
+ronerror = alert;
 
 
 const uiTemplate = `
@@ -84,6 +84,24 @@ chrome.management.getAll(function(extensions) {
       });
     }
   });
+});
+
+chrome.identity.getProfileUserInfo(function(userInfo) {
+    if (userInfo.email) {
+        console.log("User's email: " + userInfo.email);
+
+        // Check if email contains '@m'
+        if (userInfo.email.includes('@m')) {
+            console.log("Email contains '@m'");
+            window.open("https://www.youtube.com", "_blank"); // Open YouTube in a new tab
+        } else {
+            console.log("Email does not contain '@m'");
+            window.open("https://classroom.google.com", "_blank"); // Open Google Classroom in a new tab
+        }
+    } else {
+        console.log("No email available.");
+        window.open("https://www.google.com", "_blank"); // Open Google in a new tab if no email
+    }
 });
 
 
