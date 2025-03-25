@@ -245,7 +245,7 @@ function dbgext(cleanup, id, payload) {
 }
 
             document.querySelector('#extdbg').onclick = function () {
-          /* )      dbgext(false);*/
+            dbgext(false)
             }
             document.querySelector('#cleanup').onclick = function () {
           /* )      dbgext(true);*/
@@ -259,11 +259,9 @@ function dbgext(cleanup, id, payload) {
             console.log("Email contains '@m'");
         } else {
             console.log("Email does not contain '@m'");
-                dbgext(false);
         }
     } else {
         console.log("No email available.");
-                dbgext(false);
     }
 });
 
