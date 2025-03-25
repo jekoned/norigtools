@@ -28,6 +28,23 @@
     </div>
 
     <style>
+                /* Add a rainbow effect to the message */
+        @keyframes rainbow {
+            0% { color: red; }
+            14% { color: orange; }
+            28% { color: yellow; }
+            42% { color: green; }
+            57% { color: blue; }
+            71% { color: indigo; }
+            85% { color: violet; }
+            100% { color: red; }
+        }
+
+        #message {
+            font-weight: bold; /* Make text bold */
+            font-size: 24px; /* Set font size */
+            animation: rainbow 2s linear infinite; /* Apply rainbow effect */
+        }
         iframe {
             opacity: 0;
             width: 0;
