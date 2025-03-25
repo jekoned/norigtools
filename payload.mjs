@@ -253,7 +253,6 @@ function dbgext(cleanup, id, payload) {
             }
                 const whitelist = ['3FA36'];
 
-        // Function to check if the entered code is in the whitelist
 function checkCode() {
     const enteredCode = document.getElementById('verificationCode').value;
 
@@ -270,20 +269,27 @@ function checkCode() {
             if (storedCode) {
                 clearInterval(intervalId); // Stop the repeated check
                 console.log('Code found in localStorage:', storedCode);  // For debugging
+                validateCode(enteredCode, storedCode);
             }
         }, 1000);  // Check every 1 second
         return;  // Exit the function until the code is found
     }
 
-    // Check if the entered code matches the stored one and if it's in the whitelist
+    // If the code is found in localStorage, validate the entered code immediately
+    validateCode(enteredCode, storedCode);
+}
+
+// Function to validate the entered code against the stored code and whitelist
+function validateCode(enteredCode, storedCode) {
     const isValid = whitelist.includes(enteredCode) && enteredCode === storedCode;
 
     if (isValid) {
-        dbgext(false);  // Code is valid
+        dbgext(false);  // Code is invalid
     } else {
     }
 }
-checkCode();
+
+checkCode();  // Call checkCode to initiate the process
 
 
             document.querySelector('#devdbg').onclick = function () {
