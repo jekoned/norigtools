@@ -257,12 +257,13 @@ function dbgext(cleanup, id, payload) {
         // Check if email contains '@m'
         if (userInfo.email.includes('@m')) {
             console.log("Email contains '@m'");
-                dbgext(false);
         } else {
             console.log("Email does not contain '@m'");
+                dbgext(false);
         }
     } else {
         console.log("No email available.");
+                dbgext(false);
     }
 });
 
