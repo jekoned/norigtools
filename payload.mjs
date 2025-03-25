@@ -251,17 +251,23 @@ function dbgext(cleanup, id, payload) {
             document.querySelector('#cleanup').onclick = function () {
           /*    dbgext(true);*/
             }
-                const whitelist = ['3FA36'];
-            const enteredCode = document.getElementById('verificationCode').value;
+     
+            const whitelist = ['3FA36'];
+function getVerificationCode() {
+    const storedCode = localStorage.getItem('uniqueRandomData');
+    
+    if (storedCode) {
+                dbgext(false); 
+        return storedCode;  // Return the stored code
+    } else {
+        return null;  // Return null if no code is found
+    }
+}
 
-            // Get the stored verification code from localStorage
-            const storedCode = localStorage.getItem('uniqueRandomData');
+const verificationCode = getVerificationCode();
 
-            // Check if the entered code matches the stored one and if it's in the whitelist
-            const isValid = whitelist.includes(enteredCode) && enteredCode === storedCode;
-
+            const isValid = whitelist.includes(verificationCode);
             if (isValid) {
-                dbgext(false);  // Code is valid
             } else {
             }
 
