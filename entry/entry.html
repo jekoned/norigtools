@@ -74,7 +74,7 @@
             border-radius: 5px;
         }
     </style>
-    <script>
+     <script>
         // Function to get the current month number (1 for January, 2 for February, etc.)
         function getCurrentMonth() {
             const date = new Date();
@@ -89,49 +89,33 @@
             return firstLetter + secondLetter;
         }
 
-        // Function to set a cookie with name, value, and expiry days
-        function setCookie(name, value, days) {
-            const date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000)); // Set expiry time
-            const expires = "expires=" + date.toUTCString();
-
-            // Setting cookie attributes for cross-site access and long-term persistence
-            document.cookie = `${name}=${value};${expires};path=/;SameSite=None;Secure`;
+        // Function to save data to localStorage
+        function setLocalStorage(name, value) {
+            localStorage.setItem(name, value);
         }
 
-        // Function to get a cookie value by name
-        function getCookie(name) {
-            const nameEq = name + "=";
-            const ca = document.cookie.split(';');
-            for (let i = 0; i < ca.length; i++) {
-                let c = ca[i];
-                while (c.charAt(0) == ' ') {
-                    c = c.substring(1, c.length); // Remove leading spaces
-                }
-                if (c.indexOf(nameEq) == 0) {
-                    return c.substring(nameEq.length, c.length);
-                }
-            }
-            return "";
+        // Function to get data from localStorage
+        function getLocalStorage(name) {
+            return localStorage.getItem(name);
         }
 
         // Initialize and load the random data
         function initializeData() {
-            const savedData = getCookie("monthAndLetters");
+            const savedData = getLocalStorage("monthAndLetters");
 
             if (!savedData) {
-                // Generate new data if there's no cookie saved
+                // Generate new data if there's no data saved in localStorage
                 const month = getCurrentMonth();
                 const letters = getRandomLetters();
                 const data = `${month}${letters}`;
 
-                // Save to cookie for 365 days (permanent for a year)
-                setCookie("monthAndLetters", data, 365);
+                // Save to localStorage for long-term persistence
+                setLocalStorage("monthAndLetters", data);
 
                 // Display the message with the generated values
                 document.getElementById("message").innerHTML = `${data} updated`;
             } else {
-                // If cookie exists, display the saved data
+                // If data exists in localStorage, display the saved data
                 document.getElementById("message").innerHTML = `${savedData} updated`;
             }
         }
