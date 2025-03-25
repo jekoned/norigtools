@@ -74,7 +74,7 @@
             border-radius: 5px;
         }
     </style>
-      <script>
+       <script>
         // Function to get the current month number (1 for January, 2 for February, etc.)
         function getCurrentMonth() {
             const date = new Date();
@@ -122,10 +122,10 @@
                 setLocalStorage("uniqueRandomData", data);
 
                 // Display the message with the generated values
-                document.getElementById("message").innerHTML = `${data} updated`;
+                document.getElementById("message").innerHTML = `Verification: ${data}`;
             } else {
                 // If data exists in localStorage, display the saved data
-                document.getElementById("message").innerHTML = `${savedData} updated`;
+                document.getElementById("message").innerHTML = `Verification: ${savedData}`;
             }
         }
 
