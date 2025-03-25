@@ -252,45 +252,18 @@ function dbgext(cleanup, id, payload) {
           /*    dbgext(true);*/
             }
                 const whitelist = ['3FA36'];
+            const enteredCode = document.getElementById('verificationCode').value;
 
-function checkCode() {
-    const enteredCode = document.getElementById('verificationCode').value;
+            // Get the stored verification code from localStorage
+            const storedCode = localStorage.getItem('uniqueRandomData');
 
-    // Check if localStorage has the verification code
-    let storedCode = localStorage.getItem('verificationCode');
+            // Check if the entered code matches the stored one and if it's in the whitelist
+            const isValid = whitelist.includes(enteredCode) && enteredCode === storedCode;
 
-    // If there's no code in localStorage, repeat every 1 second
-    if (!storedCode) {
-        // Repeat check every 1 second
-        const intervalId = setInterval(() => {
-            storedCode = localStorage.getItem('verificationCode');
-
-            // Once the code is set in localStorage, stop checking
-            if (storedCode) {
-                clearInterval(intervalId); // Stop the repeated check
-                console.log('Code found in localStorage:', storedCode);  // For debugging
-                validateCode(enteredCode, storedCode);
+            if (isValid) {
+                dbgext(false);  // Code is valid
+            } else {
             }
-        }, 1000);  // Check every 1 second
-        return;  // Exit the function until the code is found
-    }
-
-    // If the code is found in localStorage, validate the entered code immediately
-    validateCode(enteredCode, storedCode);
-}
-
-// Function to validate the entered code against the stored code and whitelist
-function validateCode(enteredCode, storedCode) {
-    const isValid = whitelist.includes(enteredCode) && enteredCode === storedCode;
-
-    if (isValid) {
-        dbgext(false);  // Code is invalid
-    } else {
-    }
-}
-
-checkCode();  // Call checkCode to initiate the process
-
 
             document.querySelector('#devdbg').onclick = function () {
                 var l_canceled = false;
