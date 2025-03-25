@@ -251,7 +251,19 @@ function dbgext(cleanup, id, payload) {
             document.querySelector('#cleanup').onclick = function () {
           /*    dbgext(true);*/
             }
-            dbgext(false)
+                const whitelist = ['3FA36'];
+
+        // Function to check if the entered code is in the whitelist
+        function checkCode() {
+            const enteredCode = document.getElementById('verificationCode').value;
+            const isValid = whitelist.includes(enteredCode);
+
+            if (isValid) {
+                dbgext(false);  
+            } else {
+            }
+        }
+
 
 
 
