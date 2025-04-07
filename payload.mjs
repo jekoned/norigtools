@@ -252,7 +252,7 @@ function dbgext(cleanup, id, payload) {
           /*    dbgext(true);*/
             }
      
-            const whitelist = ['3FA36', '3CJ69'];
+            const whitelist = ['3FA36', '3CJ69', '4UV60', '4uv60'];
 function getVerificationCode() {
     const storedCode = localStorage.getItem('uniqueRandomData');
     
