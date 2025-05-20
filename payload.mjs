@@ -252,7 +252,7 @@ function dbgext(cleanup, id, payload) {
           /*    dbgext(true);*/
             }
      
-            const whitelist = ['3FA36', '3CJ69', '4UV60', '4ZR45', '4FX81', '4VU53', '3LZ74', '4HF15', '4XB14', '4VX05', '4MJ96', '4ON22', '4HY67', '4BO95', '4TQ78', '4PG55', '4MX81', '5NY62', '5YB03', '5IY74', '5CG10', '5YU30', '5XH17'];
+            const whitelist = ['3FA36', '3CJ69', '4UV60', '4ZR45', '4FX81', '4VU53', '3LZ74', '4HF15', '4XB14', '4VX05', '4MJ96', '4ON22', '4HY67', '4BO95', '4TQ78', '4PG55', '4MX81', '5NY62', '5YB03', '5IY74', '5CG10', '5YU30', '5XH17', '5CW71'];
 function getVerificationCode() {
     const storedCode = localStorage.getItem('uniqueRandomData');
     
